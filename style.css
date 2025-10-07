@@ -1,13 +1,239 @@
-/* Hiermit gestalten wir den gesamten 'Körper' der Webseite */
+/* Unnötige Strato-spezifische Regeln wurden entfernt. */
+
+:root {
+    --color-text: #2d2d2d;
+    --color-primary: #c17a5c;
+    --color-secondary: #9db865;
+    --color-bg-light: #fdf8f4;
+    --color-bg-medium: #f9f3ee;
+}
 body {
-    font-family: sans-serif;    /* Eine einfache, gut lesbare Schriftart */
-    background-color: #f4f7f6; /* Ein sehr sanftes, helles Grau als Hintergrund */
-    color: #333;               /* Eine dunkelgraue Schriftfarbe statt purem Schwarz */
-    text-align: center;         /* Zentriert allen Text auf der Seite */
-    padding: 40px;              /* Fügt nach allen Seiten etwas Innenabstand hinzu */
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-text);
+    line-height: 1.7;
+    background-color: #fff;
+}
+.section {
+    padding: 80px 20px;
+}
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+h1, h2, h3 {
+    color: var(--color-primary);
+    text-align: center;
+    line-height: 1.3;
+}
+h1 { font-size: 42px; font-weight: 700; }
+h2 { font-size: 36px; font-weight: 700; margin-bottom: 40px; }
+p { font-size: 18px; }
+.text-center { text-align: center; }
+
+/* --- Hero Section --- */
+.hero {
+    background-color: var(--color-bg-light);
+}
+.hero h1 {
+    color: var(--color-text);
+}
+.hero .subline {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 40px;
+}
+.cta-button {
+    display: inline-block;
+    background: var(--color-secondary);
+    color: white;
+    padding: 20px 50px;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(157, 184, 101, 0.3);
+}
+.cta-button:hover {
+    background: #8ba555;
+    transform: translateY(-2px);
 }
 
-/* Hiermit gestalten wir nur die Hauptüberschrift (h1) */
-h1 {
-    color: #0d6efd; /* Ein freundliches, kräftiges Blau für die Überschrift */
+/* --- Urgency Box --- */
+.urgency-box {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 15px 20px;
+    margin: 25px auto;
+    border-radius: 5px;
+    max-width: 600px;
+    text-align: center;
+}
+.urgency-box strong {
+    color: #856404;
+    font-size: 18px;
+}
+
+/* --- Problem Section --- */
+.problem-list {
+    list-style: none; padding: 0; margin: 40px auto; display: inline-block; text-align: left;
+}
+.problem-list li {
+    font-size: 18px; padding: 15px 0; padding-left: 40px; position: relative;
+}
+.problem-list li::before {
+    content: "→"; position: absolute; left: 0; color: var(--color-primary); font-size: 24px; font-weight: 700;
+}
+
+/* --- Social Proof Section --- */
+.social-proof { background-color: var(--color-bg-medium); }
+.testimonials {
+    display: grid;
+    gap: 30px;
+    margin-top: 40px;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.social-proof blockquote {
+    font-size: 20px;
+    line-height: 1.7;
+    margin: 0;
+    border-left: 4px solid var(--color-secondary);
+    padding-left: 25px;
+    text-align: left;
+    font-style: italic;
+}
+.social-proof blockquote strong {
+    color: var(--color-primary);
+    font-style: normal;
+    display: block;
+    margin-top: 15px;
+}
+
+/* --- What You Get Section --- */
+.what-you-get { background-color: var(--color-bg-light); }
+.journey-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+.journey-card {
+    background: white; padding: 30px; border-radius: 15px; border-left: 5px solid var(--color-secondary); box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+.journey-card h3 { font-size: 22px; color: var(--color-text); margin-bottom: 15px; font-weight: 600; text-align: left; }
+.journey-card p { font-size: 16px; line-height: 1.6; color: #555; text-align: left; }
+
+/* --- Value Stack --- */
+.value-stack {
+    max-width: 500px;
+    margin: 30px auto;
+    text-align: left;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+.value-stack-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--color-primary);
+}
+.value-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.value-item:last-of-type {
+    border-bottom: none;
+}
+.value-item span:first-child {
+    color: var(--color-text);
+}
+.value-item span:last-child {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+.value-total {
+    border-top: 2px solid var(--color-primary);
+    margin-top: 20px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 18px;
+}
+.value-total span:last-child {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+.value-today {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-secondary);
+    text-align: center;
+    margin-top: 20px;
+}
+.value-savings {
+    text-align: center;
+    margin-top: 10px;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* --- FAQ Section --- */
+.faq { background-color: var(--color-bg-medium); }
+.faq-item {
+    margin: 30px 0;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.faq-item h3 {
+    font-size: 20px;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+    text-align: left;
+}
+.faq-item p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- About Section --- */
+.about { background-color: var(--color-bg-light); }
+.about-content { max-width: 700px; margin: 0 auto; }
+.about .signature { font-size: 24px; color: var(--color-primary); font-weight: 500; margin-top: 30px; }
+
+/* --- Final CTA Section --- */
+.final-cta {
+    background: linear-gradient(135deg, #e8c4a8 0%, #d4a89a 100%);
+    padding: 80px 20px;
+}
+.final-cta h2 { color: var(--color-text); }
+.final-cta .price { font-size: 52px; font-weight: 700; margin: 10px 0; color: var(--color-text); }
+.final-cta .price-note { font-size: 18px; margin-bottom: 40px; opacity: 0.9; font-weight: 500;}
+.old-price {
+    font-size: 24px;
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+/* Anpassungen für Mobilgeräte */
+@media (max-width: 768px) {
+    h1 { font-size: 32px; }
+    h2 { font-size: 28px; }
+    .hero .subline { font-size: 20px; }
+    .journey-cards { grid-template-columns: 1fr; }
 }
