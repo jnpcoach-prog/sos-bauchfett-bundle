@@ -1,0 +1,13 @@
+/* Hiermit gestalten wir den gesamten 'Körper' der Webseite */
+body {
+    font-family: sans-serif;    /* Eine einfache, gut lesbare Schriftart */
+    background-color: #f4f7f6; /* Ein sehr sanftes, helles Grau als Hintergrund */
+    color: #333;               /* Eine dunkelgraue Schriftfarbe statt purem Schwarz */
+    text-align: center;         /* Zentriert allen Text auf der Seite */
+    padding: 40px;              /* Fügt nach allen Seiten etwas Innenabstand hinzu */
+}
+
+/* Hiermit gestalten wir nur die Hauptüberschrift (h1) */
+h1 {
+    color: #0d6efd; /* Ein freundliches, kräftiges Blau für die Überschrift */
+}
