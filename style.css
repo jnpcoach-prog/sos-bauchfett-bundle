@@ -1,5 +1,4 @@
-/* Unnötige Strato-spezifische Regeln wurden entfernt. */
-
+/* Globale Design-Variablen und Body-Styles */
 :root {
     --color-text: #2d2d2d;
     --color-primary: #c17a5c;
