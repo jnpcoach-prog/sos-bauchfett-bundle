@@ -125,14 +125,28 @@ p { font-size: 18px; }
 }
 
 /* --- Problem Section --- */
-.problem-list {
-    list-style: none; padding: 0; margin: 40px auto; display: inline-block; text-align: left;
+.pain-points-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 50px;
+    text-align: left;
 }
-.problem-list li {
-    font-size: 18px; padding: 15px 0; padding-left: 40px; position: relative;
+.pain-point-card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
-.problem-list li::before {
-    content: "→"; position: absolute; left: 0; color: var(--color-primary); font-size: 24px; font-weight: 700;
+.pain-point-card .icon {
+    font-size: 36px;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+.pain-point-card p {
+    font-size: 17px;
+    margin: 0;
 }
 
 /* --- Social Proof Section --- */
