@@ -89,8 +89,8 @@
 
         <section class="section what-you-get">
             <div class="container">
-                <h2>Dein kompletter Fahrplan: Das steckt im SOS Bauchfett Bundle</h2>
-                <p class="text-center">Das Bundle ist keine weitere Diät. Es ist Deine "Erste-Hilfe-Box" mit 4 Bausteinen, die Dich an die Hand nimmt und Dir zeigt, wie Du Deinen Körper in seine Balance zurückführst.</p>
+                <h2>Das SOS Bauchfett Bundle</h2>
+                <p class="sub-headline">Dein kompletter Fahrplan zum Wohlfühlgewicht</p>
                 
                 <div class="journey-cards">
                     <div class="journey-card">
@@ -192,18 +192,16 @@
         </section>
 
         <section class="section about">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-image">
-                        <img src="foto-about.jpg" alt="Jacqueline Näther-Piatraschk mit einer Kiste voller Gemüse">
-                    </div>
-                    <div class="about-text">
-                        <h2>Eine Abkürzung, die ich mir selbst gewünscht hätte</h2>
-                        <p>Ich bin Jacqueline, 52 Jahre alt – und ich kenne das Gefühl, wenn der eigene Körper plötzlich nach ganz neuen Regeln spielt.</p>
-                        <p>Als ausgebildete Ernährungsberaterin und Frau mitten in den Wechseljahren weiß ich aus erster Hand: Das ist kein Kampf, den Du mit Härte gewinnen kannst. Es ist eine Einladung, die neue Sprache Deines Körpers zu lernen.</p>
-                        <p>Dieses Bundle ist das Wissen und die Strategie, die ich mir selbst gewünscht hätte, als ich an genau dem Punkt stand, an dem Du jetzt bist.</p>
-                        <p class="signature">Alles Liebe, Deine Jacqueline</p>
-                    </div>
+            <div class="about-content-fullwidth">
+                <div class="about-image-full">
+                    <img src="foto-about.jpg" alt="Jacqueline Näther-Piatraschk mit einer Kiste voller Gemüse">
+                </div>
+                <div class="about-text-full">
+                    <h2>Eine Abkürzung, die ich mir selbst gewünscht hätte</h2>
+                    <p>Ich bin Jacqueline, 52 Jahre alt – und ich kenne das Gefühl, wenn der eigene Körper plötzlich nach ganz neuen Regeln spielt.</p>
+                    <p>Als ausgebildete Ernährungsberaterin und Frau mitten in den Wechseljahren weiß ich aus erster Hand: Das ist kein Kampf, den Du mit Härte gewinnen kannst. Es ist eine Einladung, die neue Sprache Deines Körpers zu lernen.</p>
+                    <p>Dieses Bundle ist das Wissen und die Strategie, die ich mir selbst gewünscht hätte, als ich an genau dem Punkt stand, an dem Du jetzt bist.</p>
+                    <p class="signature">Alles Liebe, Deine Jacqueline</p>
                 </div>
             </div>
         </section>
@@ -218,8 +216,8 @@
             
             <a href="DEIN_DIGISTORE24_LINK_HIER" class="cta-button">Ja, ich will meinen Körper wieder verstehen!</a>
             
-            <div class="urgency-box" style="margin-top: 30px;">
-                <strong>⏰ Dieses Start-Angebot ist nur für kurze Zeit verfügbar</strong>
+             <div class="trust-text">
+                <p>🔒 Sichere & verschlüsselte Zahlung über Digistore24<br>✓ Sofortiger Zugang per E-Mail nach dem Kauf</p>
             </div>
         </section>
     </main>
@@ -231,6 +229,21 @@
         </div>
         <p class="copyright">© 2025 Jacqueline Näther-Piatraschk | Alle Rechte vorbehalten.</p>
     </footer>
+    
+    <script>
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
 
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
