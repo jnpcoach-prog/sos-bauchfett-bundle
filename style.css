@@ -47,12 +47,31 @@ p { font-size: 18px; }
 .hero {
     background-color: var(--color-bg-light);
     padding-top: 60px;
+    padding-bottom: 60px;
+}
+.hero .container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.hero-text {
+    flex: 1;
+    text-align: left;
+}
+.hero-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 .hero h1 {
     color: var(--color-text);
+    text-align: left;
 }
 .hero .subline {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 400;
     color: var(--color-primary); 
     margin-bottom: 40px;
@@ -80,7 +99,7 @@ p { font-size: 18px; }
     background: #fff3cd;
     border-left: 4px solid #ffc107;
     padding: 15px 20px;
-    margin: 25px auto;
+    margin: 25px 0;
     border-radius: 5px;
     max-width: 600px;
     text-align: center;
@@ -205,55 +224,67 @@ p { font-size: 18px; }
 
 /* --- FAQ Section --- */
 .faq { background-color: var(--color-bg-medium); }
+/* HIER SIND DIE ÄNDERUNGEN für das aufklappbare Design */
 .faq-item {
-    margin: 30px 0;
-    padding: 25px;
-    background: white;
+    margin: 15px 0;
+    border: 1px solid #e0e0e0;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background-color: white;
+    transition: box-shadow 0.3s ease;
 }
-.faq-item h3 {
+.faq-item:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+}
+.faq-item summary {
     font-size: 20px;
+    font-weight: 600;
     color: var(--color-primary);
-    margin-bottom: 12px;
-    text-align: left;
+    padding: 20px;
+    cursor: pointer;
+    list-style: none; /* Entfernt den Standard-Pfeil */
+    position: relative;
+    outline: none;
 }
-.faq-item p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin: 0;
+.faq-item summary::-webkit-details-marker { 
+    display: none; 
+}
+.faq-item summary::after { /* Unser eigenes Plus/Minus-Icon */
+    content: '+';
+    position: absolute;
+    right: 25px;
+    font-size: 28px;
+    font-weight: 400;
+    transition: transform 0.3s ease;
+}
+.faq-item[open] summary::after { /* Gedrehtes Icon, wenn die Frage offen ist */
+    transform: rotate(45deg);
+}
+.faq-item .faq-answer { /* Container für die Antwort, damit der Abstand stimmt */
+    font-size: 17px;
+    line-height: 1.7;
+    padding: 0px 25px 25px 25px;
+    color: #333;
 }
 
+
 /* --- About Section --- */
-.about {
-    padding: 0; 
-    background-color: var(--color-bg-light);
-    /* NEU: Stellt sicher, dass der Container die Höhe des Inhalts annimmt */
-    overflow: hidden; 
-}
-.about-content-fullwidth { 
-    max-width: 100%;
+.about { background-color: var(--color-bg-light); }
+.about-content { 
+    max-width: 850px; 
     margin: 0 auto; 
-    display: grid; /* Wir nutzen jetzt GRID statt Flexbox */
-    grid-template-columns: 1fr 1fr; /* Zwei exakt gleich große Spalten (50/50) */
+    display: flex;
     align-items: center;
+    gap: 50px;
 }
-.about-image-full img {
-    width: 100%;
-    /* NEU: Das Bild füllt die Spaltenhöhe komplett aus und wird passend zugeschnitten */
-    height: 100%; 
-    object-fit: cover; 
-    display: block;
+.about-image img {
+    width: 300px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
-.about-text-full {
-    /* NEU: Angepasster Abstand für die neue Layout-Methode */
-    padding: 6%; 
+.about-text {
+    flex: 1;
     text-align: left;
-    box-sizing: border-box;
-}
-.about-text-full h2 {
-    text-align: left;
-    margin-top: 0;
 }
 .about .signature { 
     font-size: 24px; 
@@ -303,11 +334,23 @@ p { font-size: 18px; }
 @media (max-width: 768px) {
     h1 { font-size: 32px; }
     h2 { font-size: 28px; }
-    .hero .subline { font-size: 20px; }
-    .journey-cards { grid-template-columns: 1fr; }
-    /* HIER IST DIE EINZIGE ÄNDERUNG: Handy-Ansicht für das Foto */
+
+    .hero .container { 
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 20px;
+    }
+    .hero-text, .hero h1 {
+        text-align: center;
+    }
+     .urgency-box {
+        margin: 25px auto;
+    }
     .about-content {
         flex-direction: column;
         text-align: center;
     }
+
+    .hero .subline { font-size: 20px; }
+    .journey-cards { grid-template-columns: 1fr; }
 }
