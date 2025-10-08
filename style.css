@@ -13,10 +13,25 @@ body {
     color: var(--color-text);
     line-height: 1.7;
     background-color: #fff;
+    overflow-x: hidden;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 .section {
     padding: 80px 20px;
+    opacity: 0; /* Startet unsichtbar für die Animation */
 }
+
 .container {
     max-width: 850px;
     margin: 0 auto;
@@ -148,6 +163,14 @@ p { font-size: 18px; }
 
 /* --- What You Get Section --- */
 .what-you-get { background-color: var(--color-bg-light); }
+.sub-headline {
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--color-text);
+    margin-top: -30px;
+    margin-bottom: 50px;
+    text-align: center;
+}
 .journey-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -265,33 +288,33 @@ p { font-size: 18px; }
     color: #333;
 }
 
-
-/* --- About Section (NEUE, STABILE VERSION) --- */
+/* --- About Section --- */
 .about {
+    padding: 0; 
     background-color: var(--color-bg-light);
+    overflow: hidden; 
 }
-.about-content { 
-    max-width: 850px; 
+.about-content-fullwidth { 
+    max-width: 100%;
     margin: 0 auto; 
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 50px;
 }
-.about-image { /* Neuer Container für das Bild */
-    flex: 0 0 320px; /* Gibt dem Bild eine fixe Breite von 320px */
-}
-.about-image img {
+.about-image-full img {
     width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    height: 100%; 
+    object-fit: cover; 
+    display: block;
 }
-.about-text { /* Sagt dem Text, er soll den Rest des Platzes einnehmen */
-    flex: 1;
+.about-text-full {
+    padding: 6%; 
     text-align: left;
+    box-sizing: border-box;
 }
-.about-text h2 {
-    text-align: left; /* Überschrift linksbündig machen */
+.about-text-full h2 {
+    text-align: left;
+    margin-top: 0;
 }
 .about .signature { 
     font-size: 24px; 
@@ -299,7 +322,6 @@ p { font-size: 18px; }
     font-weight: 500; 
     margin-top: 20px; 
 }
-
 
 /* --- Final CTA Section --- */
 .final-cta {
@@ -313,6 +335,12 @@ p { font-size: 18px; }
     font-size: 24px;
     text-decoration: line-through;
     opacity: 0.7;
+}
+.trust-text {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
 }
 
 /* --- Footer --- */
@@ -354,12 +382,14 @@ p { font-size: 18px; }
      .urgency-box {
         margin: 25px auto;
     }
-    /* KORREKTUR für die Handy-Ansicht des About-Blocks */
-    .about-content {
-        flex-direction: column;
+    .about-content-fullwidth {
+        grid-template-columns: 1fr;
+    }
+    .about-text-full {
+        padding: 8%;
         text-align: center;
     }
-    .about-text h2 {
+    .about-text-full h2 {
         text-align: center;
     }
 
