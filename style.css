@@ -225,24 +225,34 @@ p { font-size: 18px; }
 }
 
 /* --- About Section --- */
-.about { background-color: var(--color-bg-light); }
-/* HIER IST DIE EINZIGE ÄNDERUNG: Vorbereitung für das Foto */
+.about {
+    /* Wir entfernen das alte Padding, da der Container jetzt die Abstände regelt */
+    padding: 0; 
+    background-color: var(--color-bg-light);
+}
 .about-content { 
-    max-width: 850px; 
+    max-width: 100%; /* Volle Breite nutzen */
     margin: 0 auto; 
     display: flex;
-    align-items: center;
-    gap: 50px;
+    align-items: center; /* Vertikal zentrieren */
+    gap: 0; /* Kein Abstand, da die Spalten direkt aneinanderstoßen */
+}
+.about-image {
+    flex-basis: 45%; /* Die Bild-Spalte nimmt 45% der Breite ein */
 }
 .about-image img {
-    width: 300px;
+    width: 100%; /* Das Bild füllt seine Spalte komplett aus */
     height: auto;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: block; /* Wichtig, um kleine Lücken unter dem Bild zu entfernen */
 }
 .about-text {
-    flex: 1;
+    flex-basis: 55%; /* Die Text-Spalte nimmt 55% der Breite ein */
+    padding: 5%; /* Innenabstand für den Text, damit er nicht am Rand klebt */
     text-align: left;
+}
+.about-text h2 {
+    text-align: left; /* Überschrift linksbündig machen */
+    margin-top: 0;
 }
 .about .signature { 
     font-size: 24px; 
