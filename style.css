@@ -247,7 +247,7 @@ p { font-size: 18px; }
 /* --- Footer --- */
 .footer {
     /* HIER IST DIE ÄNDERUNG: Abstand noch weiter reduziert */
-    padding: 20px;
+    padding: 15px 20px;
     background-color: #f4f7f6;
     text-align: center;
     border-top: 1px solid #e9e9e9;
@@ -263,7 +263,8 @@ p { font-size: 18px; }
     text-decoration: underline;
 }
 .footer .copyright {
-    margin-top: 20px;
+    /* HIER IST DIE 2. ÄNDERUNG: Abstand zwischen den Zeilen reduziert */
+    margin-top: 10px;
     font-size: 12px;
     color: #888;
 }
