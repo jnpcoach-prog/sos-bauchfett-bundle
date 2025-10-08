@@ -48,11 +48,31 @@ p { font-size: 18px; }
     background-color: var(--color-bg-light);
     padding-top: 60px;
 }
+/* NEU: Flexbox-Layout für Bild und Text nebeneinander */
+.hero .container {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Abstand zwischen Bild und Text */
+}
+.hero-text {
+    flex: 1; /* Nimmt den verfügbaren Platz ein */
+    text-align: left; /* Text linksbündig für bessere Lesbarkeit neben dem Bild */
+}
+.hero-image img {
+    width: 150px; /* Größe des runden Fotos */
+    height: 150px;
+    border-radius: 50%; /* Macht das Bild rund */
+    object-fit: cover; /* Stellt sicher, dass das Bild den Kreis gut ausfüllt */
+    border: 5px solid white; /* Weißer Rahmen */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Dezenter Schatten */
+}
+
 .hero h1 {
     color: var(--color-text);
+    text-align: left; /* Text linksbündig */
 }
 .hero .subline {
-    font-size: 24px;
+    font-size: 22px; /* Etwas kleiner für die neue Anordnung */
     font-weight: 400;
     color: var(--color-primary); 
     margin-bottom: 40px;
@@ -80,7 +100,7 @@ p { font-size: 18px; }
     background: #fff3cd;
     border-left: 4px solid #ffc107;
     padding: 15px 20px;
-    margin: 25px auto;
+    margin: 25px 0; /* Angepasst für linksbündigen Text */
     border-radius: 5px;
     max-width: 600px;
     text-align: center;
@@ -226,7 +246,23 @@ p { font-size: 18px; }
 
 /* --- About Section --- */
 .about { background-color: var(--color-bg-light); }
-.about-content { max-width: 700px; margin: 0 auto; }
+/* NEU: Flexbox-Layout für Bild und Text nebeneinander */
+.about-content { 
+    max-width: 700px; 
+    margin: 0 auto; 
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.about-image img {
+    width: 280px; /* Breite des Fotos */
+    height: auto;
+    border-radius: 15px; /* Leicht abgerundete Ecken */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.about-text {
+    flex: 1;
+}
 .about .signature { font-size: 24px; color: var(--color-primary); font-weight: 500; margin-top: 30px; }
 
 /* --- Final CTA Section --- */
@@ -243,10 +279,8 @@ p { font-size: 18px; }
     opacity: 0.7;
 }
 
-
 /* --- Footer --- */
 .footer {
-    /* HIER IST DIE ÄNDERUNG: Abstand noch weiter reduziert */
     padding: 15px 20px;
     background-color: #f4f7f6;
     text-align: center;
@@ -263,17 +297,29 @@ p { font-size: 18px; }
     text-decoration: underline;
 }
 .footer .copyright {
-    /* HIER IST DIE 2. ÄNDERUNG: Abstand zwischen den Zeilen reduziert */
     margin-top: 10px;
     font-size: 12px;
     color: #888;
 }
 
-
 /* Anpassungen für Mobilgeräte */
 @media (max-width: 768px) {
     h1 { font-size: 32px; }
     h2 { font-size: 28px; }
-    .hero .subline { font-size: 20px; }
+    /* NEU: Anordnung auf Mobilgeräten anpassen */
+    .hero .container { 
+        flex-direction: column-reverse; /* Bild RUTSCHT ÜBER den Text */
+        text-align: center;
+    }
+    .hero-text, .hero h1 {
+        text-align: center; /* Text zentrieren auf Mobilgeräten */
+    }
+     .urgency-box {
+        margin: 25px auto;
+    }
+    .about-content {
+        flex-direction: column; /* Bild und Text untereinander */
+        text-align: center;
+    }
     .journey-cards { grid-template-columns: 1fr; }
 }
