@@ -228,26 +228,28 @@ p { font-size: 18px; }
 .about {
     padding: 0; 
     background-color: var(--color-bg-light);
+    /* NEU: Stellt sicher, dass der Container die Höhe des Inhalts annimmt */
+    overflow: hidden; 
 }
 .about-content-fullwidth { 
     max-width: 100%;
     margin: 0 auto; 
-    display: flex;
+    display: grid; /* Wir nutzen jetzt GRID statt Flexbox */
+    grid-template-columns: 1fr 1fr; /* Zwei exakt gleich große Spalten (50/50) */
     align-items: center;
-}
-.about-image-full {
-    flex-basis: 50%; /* Bild nimmt jetzt 50% der Breite ein */
 }
 .about-image-full img {
     width: 100%;
-    height: auto;
+    /* NEU: Das Bild füllt die Spaltenhöhe komplett aus und wird passend zugeschnitten */
+    height: 100%; 
+    object-fit: cover; 
     display: block;
 }
 .about-text-full {
-    flex-basis: 50%; /* Text nimmt jetzt 50% der Breite ein */
-    padding: 5% 8%; /* Großzügiger Innenabstand für den Text */
+    /* NEU: Angepasster Abstand für die neue Layout-Methode */
+    padding: 6%; 
     text-align: left;
-    box-sizing: border-box; /* Stellt sicher, dass Padding korrekt berechnet wird */
+    box-sizing: border-box;
 }
 .about-text-full h2 {
     text-align: left;
