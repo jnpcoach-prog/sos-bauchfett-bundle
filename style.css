@@ -160,6 +160,14 @@ p { font-size: 18px; }
 
 /* --- What You Get Section --- */
 .what-you-get { background-color: var(--color-bg-light); }
+.sub-headline {
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--color-text);
+    margin-top: -30px;
+    margin-bottom: 50px;
+    text-align: center;
+}
 .journey-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -227,32 +235,54 @@ p { font-size: 18px; }
     margin-top: 20px;
 }
 .value-savings {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-primary);
     text-align: center;
     margin-top: 10px;
-    color: var(--color-primary);
-    font-weight: 600;
-    font-size: 18px;
 }
 
 /* --- FAQ Section --- */
 .faq { background-color: var(--color-bg-medium); }
 .faq-item {
-    margin: 30px 0;
-    padding: 25px;
-    background: white;
+    margin: 15px 0;
+    border: 1px solid #e0e0e0;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background-color: white;
+    transition: box-shadow 0.3s ease;
 }
-.faq-item h3 {
+.faq-item:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+}
+.faq-item summary {
     font-size: 20px;
+    font-weight: 600;
     color: var(--color-primary);
-    margin-bottom: 12px;
-    text-align: left;
+    padding: 20px;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    outline: none;
 }
-.faq-item p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin: 0;
+.faq-item summary::-webkit-details-marker { 
+    display: none; 
+}
+.faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 25px;
+    font-size: 28px;
+    font-weight: 400;
+    transition: transform 0.3s ease;
+}
+.faq-item[open] summary::after {
+    transform: rotate(45deg);
+}
+.faq-item .faq-answer {
+    font-size: 17px;
+    line-height: 1.7;
+    padding: 0px 25px 25px 25px;
+    color: #333;
 }
 
 /* --- About Section --- */
@@ -261,28 +291,27 @@ p { font-size: 18px; }
     background-color: var(--color-bg-light);
     overflow: hidden; 
 }
-.about-content { 
-    max-width: 850px; 
+.about-content-fullwidth { 
+    max-width: 100%;
     margin: 0 auto; 
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 50px;
 }
-.about-image {
-    flex: 0 0 320px;
-}
-.about-image img {
+.about-image-full img {
     width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    height: 100%; 
+    object-fit: cover; 
+    display: block;
 }
-.about-text {
-    flex: 1;
+.about-text-full {
+    padding: 6%; 
     text-align: left;
+    box-sizing: border-box;
 }
-.about-text h2 {
+.about-text-full h2 {
     text-align: left;
+    margin-top: 0;
 }
 .about .signature { 
     font-size: 24px; 
@@ -303,6 +332,12 @@ p { font-size: 18px; }
     font-size: 24px;
     text-decoration: line-through;
     opacity: 0.7;
+}
+.trust-text {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
 }
 
 /* --- Footer --- */
@@ -344,11 +379,14 @@ p { font-size: 18px; }
      .urgency-box {
         margin: 25px auto;
     }
-    .about-content {
-        flex-direction: column;
+    .about-content-fullwidth {
+        grid-template-columns: 1fr;
+    }
+    .about-text-full {
+        padding: 8%;
         text-align: center;
     }
-    .about-text h2 {
+    .about-text-full h2 {
         text-align: center;
     }
 
