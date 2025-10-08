@@ -49,7 +49,6 @@ p { font-size: 18px; }
     padding-top: 60px;
     padding-bottom: 60px;
 }
-/* NEU: Flexbox-Layout für Bild und Text nebeneinander */
 .hero .container {
     display: flex;
     align-items: center;
@@ -156,4 +155,13 @@ p { font-size: 18px; }
     margin-top: 50px;
 }
 .journey-card {
-    background: white; padding: 30px; border-radius:
+    background: white; padding: 30px; border-radius: 15px; border-left: 5px solid var(--color-secondary); box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+.journey-card h3 { font-size: 22px; color: var(--color-text); margin-bottom: 15px; font-weight: 600; text-align: left; }
+.journey-card p { font-size: 16px; line-height: 1.6; color: #555; text-align: left; }
+
+/* --- Value Stack --- */
+.value-stack {
+    max-width: 500px;
+    margin: 30px auto;
+    text-align: left;
