@@ -364,6 +364,30 @@ p { font-size: 18px; }
     text-decoration: line-through;
     opacity: 0.7;
 }
+.trust-box {
+    margin: 40px auto 0;
+    max-width: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+}
+.trust-text {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+    text-align: left;
+}
+.trust-text p {
+    margin: 0;
+    font-size: 13px;
+}
+.trust-logo img {
+    max-width: 120px; /* Steuert die Größe des Logos */
+}
 .trust-text {
     margin-top: 30px;
     font-size: 14px;
@@ -425,3 +449,4 @@ p { font-size: 18px; }
     .journey-cards { grid-template-columns: 1fr; }
 
 }
+
