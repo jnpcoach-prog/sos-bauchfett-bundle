@@ -142,7 +142,27 @@ p { font-size: 18px; }
     top: 13px;
     font-size: 20px;
 }
-
+/* --- NEU: Top Testimonial Section --- */
+.top-testimonial {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: #fff; /* Weißer Hintergrund, um es vom Hero-Teil abzuheben */
+}
+.top-testimonial blockquote {
+    max-width: 650px; /* Macht das Zitat etwas schmaler und zentrierter */
+    margin: 0 auto;
+    text-align: center;
+    font-size: 22px;
+    font-style: italic;
+    border-left: none; /* Entfernt den grünen Balken für diesen speziellen Fall */
+    padding-left: 0;
+}
+.top-testimonial blockquote strong {
+    display: block;
+    margin-top: 20px;
+    font-style: normal;
+    color: var(--color-primary);
+}
 /* --- Social Proof Section --- */
 .social-proof { background-color: var(--color-bg-medium); }
 .testimonials {
@@ -403,4 +423,5 @@ p { font-size: 18px; }
 
     .hero .subline { font-size: 20px; }
     .journey-cards { grid-template-columns: 1fr; }
+
 }
