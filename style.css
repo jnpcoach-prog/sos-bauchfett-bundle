@@ -356,8 +356,8 @@ p { font-size: 18px; }
 /* --- Final CTA Section --- */
 .final-cta {
     background-color: var(--color-bg-medium);
-    padding: 80px 20px;
-    margin-bottom: 60px;
+    /* PADDING ANGEPASST: Oben 80px, Unten 140px, um den Abstand zu füllen */
+    padding: 80px 20px 140px;
 }
 .final-cta h2 { color: var(--color-text); }
 .final-cta .price { font-size: 52px; font-weight: 700; margin: 10px 0; color: var(--color-text); }
@@ -445,3 +445,4 @@ p { font-size: 18px; }
     .hero .subline { font-size: 20px; }
     .journey-cards { grid-template-columns: 1fr; }
 }
+
