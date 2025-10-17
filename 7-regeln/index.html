@@ -11,7 +11,43 @@
 
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-</head>
+
+    <style>
+        .hero-split {
+            display: flex;
+            align-items: center;
+            gap: 50px; /* Abstand zwischen Bild und Text */
+        }
+        .hero-image-full {
+            flex: 0 0 40%; /* Bild nimmt 40% der Breite ein */
+            max-width: 420px;
+        }
+        .hero-image-full img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px; /* Schöne abgerundete Ecken */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* Leichter Schatten für mehr Tiefe */
+        }
+        .hero-text-right {
+            flex: 1; /* Text nimmt den Rest des Platzes ein */
+        }
+
+        /* Für Mobilgeräte: Bild und Text untereinander */
+        @media (max-width: 800px) {
+            .hero-split {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text-right h1, .hero-text-right p {
+                text-align: center;
+            }
+            .hero-image-full {
+                margin-bottom: 30px;
+                max-width: 350px;
+            }
+        }
+    </style>
+    </head>
 <body>
 
     <header class="header">
@@ -28,7 +64,7 @@
                 </div>
                 <div class="hero-text-right">
                     <h1>Du machst alles richtig.<br />Aber Dein Körper spielt plötzlich nach neuen Regeln.</h1>
-                    <p style="font-weight: 600; font-size: 20px; color: #4CAF50;">Es fühlt sich an, als wäre Dein Körper unberechenbar geworden und der Frust auf der Waage wächst, egal was Du versuchst.</p>
+                    <p style="font-weight: 600; font-size: 20px;">Es fühlt sich an, als wäre Dein Körper unberechenbar geworden und der Frust auf der Waage wächst, egal was Du versuchst.</p>
                     <p class="subline">Die Wahrheit ist: Du musst nicht härter kämpfen. Du musst nur seine neue Sprache lernen. Dieser Guide ist Deine Übersetzerin. Entdecke die 7 entscheidenden Regeln, um die wahren Ursachen hinter dem hartnäckigen "Menopause-Bauch" zu verstehen und endlich wieder die Kontrolle zu übernehmen.</p>
                     <a href="DEIN_DIGISTORE24_LINK_HIER_FÜR_9EURO" class="cta-button">Ja, ich will die 7 Regeln verstehen! (Für nur 9 €)</a>
                 </div>
