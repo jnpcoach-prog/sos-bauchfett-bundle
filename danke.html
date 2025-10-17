@@ -1,204 +1,185 @@
-<!-- === ANFANG DES SAUBEREN CODE-BLOCKS === -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vielen Dank für deinen Kauf! - SOS Bauchfett Bundle</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+
+<meta name="robots" content="noindex, nofollow">
+
 <style>
-    :root {
-        --color-text: #2d2d2d;
-        --color-primary: #c17a5c;
-        --color-secondary: #9db865;
-        --color-bg-light: #fdf8f4;
-        --color-bg-medium: #f9f3ee;
-    }
-    .jnp-sales-page-wrapper { /* Eindeutiger Wrapper, um Konflikte zu vermeiden */
-        font-family: 'Montserrat', sans-serif;
-        color: var(--color-text);
-        line-height: 1.7;
-        background-color: #fff;
-    }
-    .jnp-sales-page-wrapper .section {
-        padding: 60px 20px;
-    }
-    .jnp-sales-page-wrapper .container {
-        max-width: 850px;
-        margin: 0 auto;
-    }
-    .jnp-sales-page-wrapper h1, 
-    .jnp-sales-page-wrapper h2, 
-    .jnp-sales-page-wrapper h3 {
-        color: var(--color-primary);
-        text-align: center;
-        line-height: 1.3;
-    }
-    .jnp-sales-page-wrapper h1 { font-size: 42px; font-weight: 700; }
-    .jnp-sales-page-wrapper h2 { font-size: 36px; font-weight: 700; margin-bottom: 40px; }
-    .jnp-sales-page-wrapper p { font-size: 18px; }
-    .jnp-sales-page-wrapper .text-center { text-align: center; }
+/* Modal Styling - fügt sich nahtlos ein */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: fadeIn 0.3s ease;
+}
 
-    /* --- Hero Section --- */
-    .jnp-sales-page-wrapper .hero {
-        background-color: var(--color-bg-light);
-        padding-top: 30px; /* Abstand oben reduziert */
-        padding-bottom: 60px;
-    }
-    .jnp-sales-page-wrapper .hero h1 {
-        color: var(--color-text);
-    }
-    .jnp-sales-page-wrapper .hero .subline {
-        font-size: 24px;
-        font-weight: 400;
-        color: var(--color-primary);
-        margin-bottom: 40px;
-    }
-    .jnp-sales-page-wrapper .cta-button {
-        display: inline-block;
-        background: var(--color-secondary);
-        color: white !important; /* Wichtig für Baukastensysteme */
-        padding: 20px 50px;
-        font-size: 20px;
-        font-weight: 600;
-        text-decoration: none;
-        border-radius: 50px;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(157, 184, 101, 0.3);
-    }
-    .jnp-sales-page-wrapper .cta-button:hover {
-        background: #8ba555;
-        transform: translateY(-2px);
-    }
-    .jnp-sales-page-wrapper .launch-offer-note {
-        margin-top: 25px;
-        font-size: 16px;
-        font-weight: 500;
-    }
+.modal-content {
+    position: relative;
+    margin: 5% auto;
+    width: 90%;
+    max-width: 900px;
+    animation: slideIn 0.3s ease;
+}
 
-    /* --- Problem Section --- */
-    .jnp-sales-page-wrapper .problem-list {
-        list-style: none; padding: 0; margin: 40px auto; display: inline-block; text-align: left;
-    }
-    .jnp-sales-page-wrapper .problem-list li {
-        font-size: 18px; padding: 15px 0; padding-left: 40px; position: relative;
-    }
-    .jnp-sales-page-wrapper .problem-list li::before {
-        content: "→"; position: absolute; left: 0; color: var(--color-primary); font-size: 24px; font-weight: 700;
-    }
+.modal-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: 10px;
+}
 
-    /* --- Social Proof Section --- */
-    .jnp-sales-page-wrapper .social-proof { background-color: var(--color-bg-medium); }
-    .jnp-sales-page-wrapper .social-proof blockquote {
-        font-size: 22px; line-height: 1.7; max-width: 750px; margin: 0 auto 20px auto; border-left: 4px solid var(--color-secondary); padding-left: 25px; text-align: left;
-    }
-    .jnp-sales-page-wrapper .social-proof blockquote strong { color: var(--color-primary); }
+.modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.3s;
+}
 
-    /* --- What You Get Section --- */
-    .jnp-sales-page-wrapper .what-you-get { background-color: var(--color-bg-light); }
-    .jnp-sales-page-wrapper .journey-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        margin-top: 50px;
-    }
-    .jnp-sales-page-wrapper .journey-card {
-        background: white; padding: 30px; border-radius: 15px; border-left: 5px solid var(--color-secondary); box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
-    .jnp-sales-page-wrapper .journey-card h3 { font-size: 22px; color: var(--color-text); margin-bottom: 15px; font-weight: 600; text-align: left; }
-    .jnp-sales-page-wrapper .journey-card p { font-size: 16px; line-height: 1.6; color: #555; text-align: left; }
+.modal-close:hover {
+    color: #83a725;
+}
 
-    /* --- About Section --- */
-    .jnp-sales-page-wrapper .about { background-color: var(--color-bg-medium); }
-    .jnp-sales-page-wrapper .about-content { max-width: 700px; margin: 0 auto; }
-    .jnp-sales-page-wrapper .about .signature { font-size: 24px; color: var(--color-primary); font-weight: 500; margin-top: 30px; }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
-    /* --- Final CTA Section --- */
-    .jnp-sales-page-wrapper .final-cta {
-        background: linear-gradient(135deg, #e8c4a8 0%, #d4a89a 100%);
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-50px);
     }
-    .jnp-sales-page-wrapper .final-cta h2 { color: var(--color-text); }
-    .jnp-sales-page-wrapper .final-cta .price { font-size: 52px; font-weight: 700; margin: 10px 0; color: var(--color-text); }
-    .jnp-sales-page-wrapper .final-cta .price-note { font-size: 18px; margin-bottom: 40px; opacity: 0.9; font-weight: 500;}
-    .jnp-sales-page-wrapper .old-price {
-        font-size: 24px;
-        text-decoration: line-through;
-        opacity: 0.7;
+    to { 
+        opacity: 1;
+        transform: translateY(0);
     }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+    }
+    
+    .modal-close {
+        top: -35px;
+        font-size: 30px;
+    }
+}
 </style>
+</head>
+<body>
 
-<div class="jnp-sales-page-wrapper">
-    <section class="section hero">
-        <div class="container text-center">
-            <h1>Du machst alles richtig.<br>Aber Dein Körper spielt nach neuen Regeln.</h1>
-            <p class="subline">Entdecke den 4-Schritte-Plan, der Dir hilft, die neue Sprache Deines Körpers zu lernen, hartnäckiges Bauchfett zu verstehen und Dein Wohlfühlgewicht zu erreichen.</p>
-            <a href="#kaufen" class="cta-button">Ja, ich will die Lösung!</a>
-            <p class="launch-offer-note">🎉 **Nur für kurze Zeit:** Sichere Dir das Bundle zum einmaligen **exklusiven Start-Vorteil**!</p>
-        </div>
-    </section>
+<header class="header">
+<a href="https://www.jnp-coach.com" target="_blank">
+<img src="logo-unterschrift.png" alt="Logo von Jacqueline Näther-Piatraschk">
+</a>
+</header>
 
-    <section class="section">
-        <div class="container text-center">
-            <h2>Kennst Du das? Dieser zermürbende Gedanke...</h2>
-            <p>Du isst bewusst, Du bewegst Dich – aber das hartnäckige Fett am Bauch scheint ein Eigenleben zu führen und einfach nicht wegzugehen. Alles, was früher funktioniert hat, zeigt plötzlich keine Wirkung mehr.</p>
-            <ul class="problem-list">
-                <li>Du fühlst Dich manchmal fremd und aufgebläht im eigenen Körper.</li>
-                <li>Die Zahl auf der Waage frustriert Dich mehr, als dass sie motiviert.</li>
-                <li>Du fragst Dich immer wieder: „Was mache ich denn falsch?"</li>
-            </ul>
-            <p><strong>Die Antwort ist: Gar nichts. Dein Körper braucht jetzt nur eine andere Strategie.</strong></p>
-        </div>
-    </section>
+<main>
+<section class="section">
+<div class="container text-center">
+<h1 style="font-size: 48px;">Herzlichen Glückwunsch!</h1>
+<p class="subline" style="color: var(--color-primary);">Du hast eine fantastische Entscheidung für dich und dein Wohlbefinden getroffen.</p>
+<p>Dein Zugang zu allen Inhalten des SOS Bauchfett Bundles wartet hier auf dich.<br>Du kannst sofort loslegen!</p>
 
-    <section class="section social-proof">
-        <div class="container text-center">
-            <h2>"Plötzlich hat es Klick gemacht!"</h2>
-            <blockquote>
-                <p>Das war die Reaktion meiner Testerin. Nachdem sie die "7 Goldenen Regeln" aus diesem Bundle las, sagte sie: <strong>"Ich weiß jetzt plötzlich wirklich, woran es bei mir liegt. Für mich hat sich eine Welt eröffnet!"</strong></p>
-            </blockquote>
-            <p>Dieses Gefühl, es endlich zu verstehen, ist der erste Schritt aus der Endlosschleife von Frust und Verzicht.</p>
-        </div>
-    </section>
+<div class="downloads-container" style="margin-top: 50px; background-color: var(--color-bg-light); padding: 40px; border-radius: 15px;">
+<h2 style="margin-bottom: 30px;">Dein Zugang zu den Inhalten</h2>
 
-    <section class="section what-you-get">
-        <div class="container">
-            <h2>Dein kompletter Fahrplan: Das steckt im SOS Bauchfett Bundle</h2>
-            <p class="text-center">Das Bundle ist keine weitere Diät. Es ist Deine "Erste-Hilfe-Box" mit 4 Bausteinen, die Dich an die Hand nimmt und Dir zeigt, wie Du Deinen Körper in seine Balance zurückführst.</p>
-            <div class="journey-cards">
-                <div class="journey-card">
-                    <h3>Schritt 1: Verstehen (PDF Guide)</h3>
-                    <p>Der "Aha-Moment"-Guide mit den 7 goldenen Regeln. Du lernst die wahren Ursachen für den "Menopause-Bauch" kennen – von Hormonen wie Cortisol bis zur Rolle von Schlaf und Protein.</p>
-                </div>
-                <div class="journey-card">
-                    <h3>Schritt 2: Umsetzen (PDF Rezeptplan)</h3>
-                    <p>Dein einfacher 7-Tage-Plan mit köstlichen Rezepten, die in unter 20 Minuten fertig sind. Jede Mahlzeit ist darauf ausgelegt, Deinen Stoffwechsel zu aktivieren und Heißhunger zu stoppen.</p>
-                </div>
-                <div class="journey-card">
-                    <h3>Schritt 3: Entspannen (Audio-Meditation)</h3>
-                    <p>Deine 10-Minuten-Auszeit, um das Stresshormon Cortisol zu senken – einer der Hauptverantwortlichen für die Fetteinlagerung am Bauch. Dein Reset-Knopf für mehr Gelassenheit.</p>
-                </div>
-                <div class="journey-card">
-                    <h3>Schritt 4: Aktivieren (PDF Workout-Plan)</h3>
-                    <p>Dein "Wohlfühl-Workout" für zu Hause. 6 einfache, aber hochwirksame Übungen, die Deine Muskulatur schützen, den Stoffwechsel ankurbeln und Dich von innen heraus stärken – ohne Geräte.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<a href="guide.pdf" class="cta-button" style="margin: 10px; display: block;" target="_blank">Schritt 1: Guide "7 Goldene Regeln" (PDF)</a>
 
-    <section class="section about">
-        <div class="container text-center">
-            <h2>Eine Abkürzung, die ich mir selbst gewünscht hätte</h2>
-            <div class="about-content">
-                <p>Ich bin Jacqueline, 52 Jahre alt – und ich kenne das Gefühl, wenn der eigene Körper plötzlich nach ganz neuen Regeln spielt.</p>
-                <p>Als ausgebildete Ernährungsberaterin und Frau mitten in den Wechseljahren weiß ich aus erster Hand: Das ist kein Kampf, den Du mit Härte gewinnen kannst. Es ist eine Einladung, die neue Sprache Deines Körpers zu lernen.</p>
-                <p>Dieses Bundle ist das Wissen und die Strategie, die ich mir selbst gewünscht hätte, als ich an genau dem Punkt stand, an dem Du jetzt bist.</p>
-                <p class="signature">Alles Liebe, Deine Jacqueline</p>
-            </div>
-        </div>
-    </section>
+<a href="7-tage-rezepteplan.pdf" class="cta-button" style="margin: 10px; display: block;" target="_blank">Schritt 2: 7-Tage-Rezeptplan (PDF)</a>
 
-    <section id="kaufen" class="section final-cta text-center">
-        <h2>Sichere Dir jetzt Deinen Start-Vorteil!</h2>
-        <p style="font-size: 20px; max-width: 600px; margin: 0 auto 20px;">Hol Dir jetzt das komplette SOS Bauchfett Bundle zum **einmaligen exklusiven Start-Vorteil**.</p>
-        
-        <p class="old-price">später 39€</p>
-        <div class="price">Nur 29€</div>
-        <p class="price-note">(Einmalige Zahlung | Du sparst 10€ | Sofortiger Zugang)</p>
-        
-        <a href="DEIN_DIGISTORE24_LINK_HIER" class="cta-button">Jetzt zum Start-Vorteil sichern</a>
-    </section>
+<a href="#" class="cta-button" style="margin: 10px; display: block;" onclick="openMeditation(event)">Schritt 3: Audio-Meditation </a>
+
+<a href="wohlfuehl-workout-fuer-zuhause.pdf" class="cta-button" style="margin: 10px; display: block;" target="_blank">Schritt 4: Workout-Plan (PDF)</a>
 </div>
-<!-- === ENDE DES SAUBEREN CODE-BLOCKS === -->
+
+<div style="margin-top: 40px; font-size: 16px;">
+<p><strong>Ein wichtiger Tipp:</strong> Speichere diese Seite als Lesezeichen in deinem Browser, damit du jederzeit wieder auf deine Inhalte zugreifen kannst.</p>
+<p>Ich wünsche dir von Herzen viel Freude und Erfolg auf deinem Weg!<br>Alles Liebe, Deine Jacqueline</p>
+</div>
+
+</div>
+</section>
+</main>
+
+<!-- Modal für Meditation -->
+<div id="meditationModal" class="modal" onclick="closeModalOnOutside(event)">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeMeditation()">&times;</button>
+        <iframe id="meditationVideo" class="modal-video" 
+                src="" 
+                title="Audio-Meditation" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<footer class="footer">
+<div class="footer-links">
+<a href="https://jnp-coach.com/impressum/" target="_blank">Impressum</a>
+<a href="https://jnp-coach.com/datenschutzerklarung/" target="_blank">Datenschutz</a>
+</div>
+<p class="copyright">© 2025 Jacqueline Näther-Piatraschk | Alle Rechte vorbehalten.</p>
+</footer>
+
+<script>
+function openMeditation(event) {
+    event.preventDefault();
+    const modal = document.getElementById('meditationModal');
+    const video = document.getElementById('meditationVideo');
+    
+    // YouTube-Video laden (mit autoplay)
+    video.src = 'https://www.youtube.com/embed/wzE2_ZdaxPc?autoplay=1&rel=0';
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Verhindert Scrollen im Hintergrund
+}
+
+function closeMeditation() {
+    const modal = document.getElementById('meditationModal');
+    const video = document.getElementById('meditationVideo');
+    
+    modal.style.display = 'none';
+    video.src = ''; // Stoppt das Video
+    document.body.style.overflow = 'auto'; // Ermöglicht wieder Scrollen
+}
+
+function closeModalOnOutside(event) {
+    if (event.target.id === 'meditationModal') {
+        closeMeditation();
+    }
+}
+
+// ESC-Taste zum Schließen
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeMeditation();
+    }
+});
+</script>
+
+</body>
+</html>
