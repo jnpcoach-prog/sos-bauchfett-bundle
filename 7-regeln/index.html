@@ -13,23 +13,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
     <style>
+        /* Macht den Container im oberen Bereich breiter für mehr Platz */
+        .hero .container {
+            max-width: 1100px; 
+        }
+
         .hero-split {
             display: flex;
             align-items: center;
-            gap: 50px; /* Abstand zwischen Bild und Text */
+            gap: 60px; /* Etwas mehr Abstand zwischen Bild und Text */
         }
         .hero-image-full {
             flex: 0 0 40%; /* Bild nimmt 40% der Breite ein */
-            max-width: 420px;
+            max-width: 450px; /* Maximale Breite für das Bild */
         }
         .hero-image-full img {
             width: 100%;
             height: auto;
-            border-radius: 12px; /* Schöne abgerundete Ecken */
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* Leichter Schatten für mehr Tiefe */
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
         .hero-text-right {
-            flex: 1; /* Text nimmt den Rest des Platzes ein */
+            flex: 1;
         }
 
         /* Für Mobilgeräte: Bild und Text untereinander */
@@ -44,6 +49,7 @@
             .hero-image-full {
                 margin-bottom: 30px;
                 max-width: 350px;
+                flex: 0 0 auto; /* Zurücksetzen für mobile Ansicht */
             }
         }
     </style>
@@ -95,7 +101,7 @@
                     </div>
                     <div class="journey-card">
                         <h3>Regel #2: Das Stress-Bauch-Geheimnis</h3>
-                        <p>Verstehe die direkte Verbindung zwischen Cortisol und Bauchfett – und wie Du den Hahn zudrehst.</p>
+                        <p>Verstehe die direkte Verbindung zwischen Cortisol und Bauchfatt – und wie Du den Hahn zudrehst.</p>
                     </div>
                     <div class="journey-card">
                         <h3>Regel #3: Die Schlaf-Strategie</h3>
