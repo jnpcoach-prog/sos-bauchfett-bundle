@@ -60,6 +60,7 @@
             margin: 30px auto;
         }
 
+        /* --- START: MOBIL-OPTIMIERUNGEN --- */
         @media (max-width: 800px) {
             .hero-split {
                 flex-direction: column;
@@ -73,13 +74,28 @@
                 max-width: 350px;
                 flex: 0 0 auto;
             }
+
+            /* NEU: Schriftgrößen für Mobilgeräte anpassen */
+            .upsell-headline {
+                font-size: 32px; /* Verkleinert die Upsell-Headline */
+                line-height: 1.3;
+            }
+            .download-box h2 {
+                font-size: 28px; /* Verkleinert die "Danke"-Überschrift */
+                line-height: 1.3;
+            }
+            .price-logic {
+                font-size: 18px; /* Passt die Schriftgröße der Preislogik an */
+                line-height: 1.6;
+            }
         }
+        /* --- ENDE: MOBIL-OPTIMIERUNGEN --- */
     </style>
 </head>
 <body>
 
     <header class="header">
-        <a href="https://www.jnp-coach.com" target="_blank">
+        <a href="https://www.jnp-coach.com" target="blank">
             <img src="../logo-unterschrift.png" alt="Logo von Jacqueline Näther-Piatraschk">
         </a>
     </header>
@@ -88,7 +104,7 @@
         <section class="section">
             <div class="container">
                 <div class="download-box">
-                    <h2>Herzlichen Glückwunsch<br>zu Deiner Entscheidung!</h2>
+                    <h2>Herzlichen Glückwunsch zu Deiner Entscheidung!</h2>
                     <p class="sub-headline">Dein Guide mit den "7 goldenen Regeln für hormonelle Balance" steht hier für Dich zum sofortigen Download bereit.</p>
                     
                     <a href="7-goldene-regeln.pdf" class="cta-button" download>
@@ -108,7 +124,7 @@
                     <img src="../foto-hero.jpg" alt="Jacqueline Näther-Piatraschk">
                 </div>
                 <div class="hero-text-right">
-                    <p class="subline">Du hast gerade den ersten Schritt getan:<br><strong>das Verstehen.</strong></p>
+                    <p class="subline">Du hast gerade den ersten Schritt getan: <strong>das Verstehen.</strong></p>
                     <p class="subline">Möchtest Du jetzt direkt ins <strong>Umsetzen</strong> kommen und die vollen Ergebnisse sehen?</p>
                     <p class="subline">Als Käuferin des Guides erhältst Du jetzt die <strong>einmalige Chance</strong>, Dir das komplette <strong>SOS Bauchfett Bundle</strong> zu einem exklusiven Vorzugspreis zu sichern.</p>
                     <p class="subline">Erhalte zusätzlich zum Guide:</p>
@@ -121,20 +137,20 @@
             </div>
             <div class="container">
                 <div class="price-logic">
-                    Hol Dir das komplette Upgrade <br>für <strong>zusätzlich nur 15 €</strong> statt 29 €.<br>
-                    (Du zahlst gesamt nur 24 € statt 29 € <br>und sparst 5 €!)
+                    Hol Dir das komplette Upgrade für <strong>zusätzlich nur 15 €</strong> statt 29 €.
+                    (Du zahlst gesamt nur 24 € statt 29 € und sparst 5 €!)
                 </div>
                 <div class="text-center">
                     <a href="DEIN_15EURO_UPSELL_LINK_HIER" class="cta-button" style="background-color: #c17a5c;">Ja, ich will das komplette Bundle! (Nur 15 €)</a>
-                 </div>
+                   </div>
             </div>
         </section>
         </main>
 
     <footer class="footer">
         <div class="footer-links">
-            <a href="https://jnp-coach.com/impressum/" target="_blank">Impressum</a>
-            <a href="https://jnp-coach.com/datenschutzerklarung/" target="_blank">Datenschutz</a>
+            <a href="https://jnp-coach.com/impressum/" target="blank">Impressum</a>
+            <a href="https://jnp-coach.com/datenschutzerklarung/" target="blank">Datenschutz</a>
         </div>
         <p class="copyright">© 2025 Jacqueline Näther-Piatraschk | Alle Rechte vorbehalten.</p>
     </footer>
