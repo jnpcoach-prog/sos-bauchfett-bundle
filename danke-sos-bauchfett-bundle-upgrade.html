@@ -181,6 +181,40 @@ document.addEventListener('keydown', function(event) {
     }
 });
 </script>
+<script src="https://cdn.brevo.com/js/sdk-loader.js" async></script>
+<script>
+    // 1. Brevo "Gehirn" initialisieren
+    window.Brevo = window.Brevo || [];
+    Brevo.push([
+        "init",
+        { client_key: "8gptrwl0li7ndinkoij8ms9y" }
+    ]);
 
+    // 2. Funktion zum Auslesen der Digistore-Daten aus der URL
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+    
+    // 3. Daten abrufen
+    const kaeuferEmail = getQueryParam('email');
+    const firstName = getQueryParam('first_name');
+    const lastName = getQueryParam('last_name');
+    const orderId = getQueryParam('order_id');
+
+    // 4. Nur wenn eine E-Mail gefunden wurde...
+    if (kaeuferEmail) {
+        // ...Kontakt identifizieren (mit Vor- und Zuname!)
+        Brevo.push(["identify", kaeuferEmail, {
+            'VORNAME': firstName,
+            'NACHNAME': lastName
+        }]); 
+        
+        // ...und KAUF-EVENT (Pfad A) auslösen
+        Brevo.push(["track", "Kauf_SOS_Bundle_Upgrade", {
+            "order_id": orderId
+        }]);
+    }
+</script>
 </body>
 </html>
