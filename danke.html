@@ -198,15 +198,15 @@ document.addEventListener('keydown', function(event) {
       return urlParams.get(param);
     }
     
-    // 3. Daten abrufen
-    const kaeuferEmail = getQueryParam('email');
-    const firstName = getQueryParam('first_name');
-    const lastName = getQueryParam('last_name');
+    // 3. Daten abrufen (MIT KORRIGIERTEN PARAMETERN)
+    const kaeuferEmail = getQueryParam('buyer_email');
+    const firstName = getQueryParam('buyer_first_name');
+    const lastName = getQueryParam('buyer_last_name');
     const orderId = getQueryParam('order_id');
 
     // 4. Nur wenn eine E-Mail gefunden wurde...
     if (kaeuferEmail) {
-        // ...Kontakt identifizieren (mit Vor- und Zuname!)
+        // ...Kontakt identifizieren
         Brevo.push(["identify", kaeuferEmail, {
             'VORNAME': firstName,
             'NACHNAME': lastName
