@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vielen Dank für deinen Kauf! - SOS Bauchfett Bundle</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+
+<meta name="robots" content="noindex, nofollow">
+
+<style>
+/* Modal Styling - fügt sich nahtlos ein */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    position: relative;
+    margin: 5% auto;
+    width: 90%;
+    max-width: 900px;
+    animation: slideIn 0.3s ease;
+}
+
+.modal-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: 10px;
+}
+
+.modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.3s;
+}
+
+.modal-close:hover {
+    color: #83a725;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+    }
+    
+    .modal-close {
+        top: -35px;
+        font-size: 30px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+<a href="https://www.jnp-coach.com" target="_blank">
+<img src="logo-unterschrift.png" alt="Logo von Jacqueline Näther-Piatraschk">
+</a>
+</header>
+
+<main>
+<section class="section">
+<div class="container text-center">
+
+   <img src="foto-hero.jpg" alt="Jacqueline Näther-Piatraschk" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-top: 10px; margin-bottom: 15px; border: 3px solid var(--color-secondary);">
+    <h1 style="font-size: 48px;">Herzlichen Glückwunsch!</h1>
+    <p class="subline" style="color: var(--color-primary);">Du hast eine fantastische Entscheidung für dich und dein Wohlbefinden getroffen.</p>
+   <p>Dein Zugang zu allen Inhalten des SOS Bauchfett Bundles wartet hier auf dich.<br>Du kannst sofort loslegen!</p>
+    
+<p>Die Abbuchung erfolgt über Digistore24</p>
+    
+<div class="downloads-container" style="margin-top: 50px; background-color: var(--color-bg-light); padding: 40px; border-radius: 15px;">
+<h2 style="margin-bottom: 30px;">Dein Zugang zu den Inhalten</h2>
+
+<a href="guide.pdf" class="cta-button" style="margin: 10px; display: block;" target="_blank">Schritt 1: Guide "7 Goldene Regeln" (PDF)</a>
+
+<a href="7-tage-rezepteplan.pdf" class="cta-button" style="margin: 10px; display: block;" target="_blank">Schritt 2: 7-Tage-Rezeptplan (PDF)</a>
+
+<a href="#" class="cta-button" style="margin: 10px; display: block;" onclick="openMeditation(event)">Schritt 3: Audio-Meditation </a>
+
+<a href="wohlfuehl-workout-fuer-zuhause.pdf" class="cta-button" style="margin: 10px; display: block;" target="_blank">Schritt 4: Workout-Plan (PDF)</a>
+</div>
+
+<div style="margin-top: 40px; font-size: 16px;">
+<p><strong>Ein wichtiger Tipp:</strong> Speichere diese Seite als Lesezeichen in deinem Browser, damit du jederzeit wieder auf deine Inhalte zugreifen kannst.</p>
+<p>Ich wünsche dir von Herzen viel Freude und Erfolg auf deinem Weg!<br>Alles Liebe, Deine Jacqueline</p>
+</div>
+
+</div>
+</section>
+</main>
+
+<div id="meditationModal" class="modal" onclick="closeModalOnOutside(event)">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeMeditation()">&times;</button>
+        <iframe id="meditationVideo" class="modal-video" 
+                src="" 
+                title="Audio-Meditation" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<footer class="footer">
+<div class="footer-links">
+<a href="https://jnp-coach.com/impressum/" target="_blank">Impressum</a>
+<a href="https://jnp-coach.com/datenschutzerklarung/" target="_blank">Datenschutz</a>
+</div>
+<p class="copyright">© 2025 Jacqueline Näther-Piatraschk | Alle Rechte vorbehalten.</p>
+</footer>
+
+<script>
+function openMeditation(event) {
+    event.preventDefault();
+    const modal = document.getElementById('meditationModal');
+    const video = document.getElementById('meditationVideo');
+    
+    // YouTube-Video laden (mit autoplay)
+    video.src = 'https://www.youtube.com/embed/wzE2_ZdaxPc?autoplay=1&rel=0';
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Verhindert Scrollen im Hintergrund
+}
+
+function closeMeditation() {
+    const modal = document.getElementById('meditationModal');
+    const video = document.getElementById('meditationVideo');
+    
+    modal.style.display = 'none';
+    video.src = ''; // Stoppt das Video
+    document.body.style.overflow = 'auto'; // Ermöglicht wieder Scrollen
+}
+
+function closeModalOnOutside(event) {
+    if (event.target.id === 'meditationModal') {
+        closeMeditation();
+    }
+}
+
+// ESC-Taste zum Schließen
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeMeditation();
+    }
+});
+</script>
+
+</body>
+</html>
