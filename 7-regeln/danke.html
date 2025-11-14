@@ -167,38 +167,60 @@
     </footer>
 <script src="https://cdn.brevo.com/js/sdk-loader.js" async></script>
 <script>
-    // 1. Brevo "Gehirn" initialisieren
+  (function () {
+    var DBG = true; // Logger an
+    function log(){ if(DBG && window.console){ console.log.apply(console, arguments); } }
+    
     window.Brevo = window.Brevo || [];
-    Brevo.push([
-        "init",
-        { client_key: "8gptrwl0li7ndinkoij8ms9y" }
-    ]);
-
-    // 2. Funktion zum Auslesen der Digistore-Daten aus der URL
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
+    Brevo.push(["init", { client_key: "8gptrwl0li7ndinkoij8ms9y" }]);
+    
+    function getParam(name){
+      try{ var val = new URLSearchParams(window.location.search).get(name); return val || ""; }
+      catch(e){ log("Param-Parse-Error:", e); return ""; }
     }
     
-    // 3. Daten abrufen (MIT KORRIGIERTEN PARAMETERN)
-    const kaeuferEmail = getQueryParam('buyer_email');
-    const firstName = getQueryParam('buyer_first_name');
-    const lastName = getQueryParam('buyer_last_name');
-    const orderId = getQueryParam('order_id');
+    var email = getParam('buyer_email');
+    var firstName = getParam('buyer_first_name');
+    var lastName  = getParam('buyer_last_name');
+    var orderId   = getParam('order_id');
+    log("Brevo-Danke-Parser:", {email:email, firstName:firstName, orderId:orderId});
+    
+    var tries = 0, MAX_TRIES = 20;
+    function fire(){
+      tries++;
+      if (typeof Brevo === "undefined" || !Brevo.push) {
+        if (tries <= MAX_TRIES) return setTimeout(fire, 250);
+        log("Brevo SDK wurde nicht bereit – Abbruch.");
+        return;
+      }
+      
+      Brevo.push(["page"]); // Test-Ping (wie vom Nerd empfohlen)
 
-    // 4. Nur wenn eine E-Mail gefunden wurde...
-    if (kaeuferEmail) {
-        // ...Kontakt identifizieren
-        Brevo.push(["identify", kaeuferEmail, {
-            'VORNAME': firstName,
-            'NACHNAME': lastName
-        }]); 
-        
-        // ...und KAUF-EVENT (Pfad B) auslösen
-        Brevo.push(["track", "Kauf_7_Regeln", {
-            "order_id": orderId
-        }]);
+      if (!email) {
+        log("Kein buyer_email in URL – track wird übersprungen.");
+        return;
+      }
+
+      var attrs = {};
+      // KORRIGIERT mit deinen Attributnamen:
+      if (firstName) attrs.VORNAME = firstName;
+      if (lastName)  attrs.NACHNAME  = lastName;
+      
+      log("Brevo.identify →", email, attrs);
+      Brevo.push(["identify", email, attrs]);
+
+      var eventName = "Kauf_7_Regeln"; // <-- SPEZIFISCH FÜR DIESE SEITE
+      var payload = { order_id: orderId || null };
+      log("Brevo.track →", eventName, payload);
+      Brevo.push(["track", eventName, payload]);
     }
+    
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", fire);
+    } else {
+      fire();
+    }
+  })();
 </script>
 </body>
 </html>
