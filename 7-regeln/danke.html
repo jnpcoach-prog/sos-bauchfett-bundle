@@ -179,11 +179,13 @@
       catch(e){ log("Param-Parse-Error:", e); return ""; }
     }
     
+    // Daten aus URL holen
     var email = getParam('buyer_email');
     var firstName = getParam('buyer_first_name');
     var lastName  = getParam('buyer_last_name');
     var orderId   = getParam('order_id');
-    log("Brevo-Danke-Parser:", {email:email, firstName:firstName, orderId:orderId});
+    var kaufDatum = new Date().toISOString().split('T')[0]; // <-- NEU
+    log("Brevo-Danke-Parser:", {email:email, firstName:firstName, orderId:orderId, kaufDatum: kaufDatum});
     
     var tries = 0, MAX_TRIES = 20;
     function fire(){
@@ -194,22 +196,31 @@
         return;
       }
       
-      Brevo.push(["page"]); // Test-Ping (wie vom Nerd empfohlen)
+      Brevo.push(["page"]); 
 
       if (!email) {
         log("Kein buyer_email in URL – track wird übersprungen.");
         return;
       }
 
-      var attrs = {};
-      // KORRIGIERT mit deinen Attributnamen:
+      // --- UNSERE NEUE LOGIK START ---
+      var attrs = {
+          "LETZTER_KAUF_SKU": "7_REGELN", // <-- SPEZIFISCH
+          "LETZTER_KAUF_DATUM": kaufDatum
+      };
       if (firstName) attrs.VORNAME = firstName;
       if (lastName)  attrs.NACHNAME  = lastName;
       
-      log("Brevo.identify →", email, attrs);
-      Brevo.push(["identify", email, attrs]);
+      var identifyPayload = {
+          "email": email,
+          "attributes": attrs
+      };
+      
+      log("Brevo.identify →", identifyPayload);
+      Brevo.push(["identify", identifyPayload]); // <-- MODERNE SYNTAX
+      // --- UNSERE NEUE LOGIK ENDE ---
 
-      var eventName = "Kauf_7_Regeln"; // <-- SPEZIFISCH FÜR DIESE SEITE
+      var eventName = "Kauf_7_Regeln"; // <-- SPEZIFISCH
       var payload = { order_id: orderId || null };
       log("Brevo.track →", eventName, payload);
       Brevo.push(["track", eventName, payload]);
@@ -222,5 +233,6 @@
     }
   })();
 </script>
+    </script>
 </body>
 </html>
