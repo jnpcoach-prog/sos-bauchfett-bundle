@@ -185,38 +185,72 @@ document.addEventListener('keydown', function(event) {
 </script>
 <script src="https://cdn.brevo.com/js/sdk-loader.js" async></script>
 <script>
-    // 1. Brevo "Gehirn" initialisieren
+  (function () {
+    var DBG = true; // Logger an
+    function log(){ if(DBG && window.console){ console.log.apply(console, arguments); } }
+    
     window.Brevo = window.Brevo || [];
-    Brevo.push([
-        "init",
-        { client_key: "8gptrwl0li7ndinkoij8ms9y" }
-    ]);
-
-    // 2. Funktion zum Auslesen der Digistore-Daten aus der URL
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
+    Brevo.push(["init", { client_key: "8gptrwl0li7ndinkoij8ms9y" }]);
+    
+    function getParam(name){
+      try{ var val = new URLSearchParams(window.location.search).get(name); return val || ""; }
+      catch(e){ log("Param-Parse-Error:", e); return ""; }
     }
     
-    // 3. Daten abrufen (MIT KORRIGIERTEN PARAMETERN)
-    const kaeuferEmail = getQueryParam('buyer_email');
-    const firstName = getQueryParam('buyer_first_name');
-    const lastName = getQueryParam('buyer_last_name');
-    const orderId = getQueryParam('order_id');
+    // Daten aus URL holen
+    var email = getParam('buyer_email');
+    var firstName = getParam('buyer_first_name');
+    var lastName  = getParam('buyer_last_name');
+    var orderId   = getParam('order_id');
+    var kaufDatum = new Date().toISOString().split('T')[0]; // <-- NEU
+    log("Brevo-Danke-Parser:", {email:email, firstName:firstName, orderId:orderId, kaufDatum: kaufDatum});
+    
+    var tries = 0, MAX_TRIES = 20;
+    function fire(){
+      tries++;
+      if (typeof Brevo === "undefined" || !Brevo.push) {
+        if (tries <= MAX_TRIES) return setTimeout(fire, 250);
+        log("Brevo SDK wurde nicht bereit – Abbruch.");
+        return;
+      }
+      
+      Brevo.push(["page"]); 
 
-    // 4. Nur wenn eine E-Mail gefunden wurde...
-    if (kaeuferEmail) {
-        // ...Kontakt identifizieren
-        Brevo.push(["identify", kaeuferEmail, {
-            'VORNAME': firstName,
-            'NACHNAME': lastName
-        }]); 
-        
-        // ...und KAUF-EVENT (Pfad A) auslösen
-        Brevo.push(["track", "Kauf_SOS_Bundle_Komplett", {
-            "order_id": orderId
-        }]);
+      if (!email) {
+        log("Kein buyer_email in URL – track wird übersprungen.");
+        return;
+      }
+
+      // --- UNSERE NEUE LOGIK START ---
+      var attrs = {
+          "LETZTER_KAUF_SKU": "SOS_KOMPLETT", // <-- SPEZIFISCH
+          "LETZTER_KAUF_DATUM": kaufDatum
+      };
+      if (firstName) attrs.VORNAME = firstName;
+      if (lastName)  attrs.NACHNAME  = lastName;
+      
+      var identifyPayload = {
+          "email": email,
+          "attributes": attrs
+      };
+      
+      log("Brevo.identify →", identifyPayload);
+      Brevo.push(["identify", identifyPayload]); // <-- MODERNE SYNTAX
+      // --- UNSERE NEUE LOGIK ENDE ---
+
+      var eventName = "Kauf_SOS_Bundle_Komplett"; // <-- SPEZIFISCH
+      var payload = { order_id: orderId || null };
+      log("Brevo.track →", eventName, payload);
+      Brevo.push(["track", eventName, payload]);
     }
+    
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", fire);
+    } else {
+      fire();
+    }
+  })();
+</script>
 </script>
 </body>
 </html>
