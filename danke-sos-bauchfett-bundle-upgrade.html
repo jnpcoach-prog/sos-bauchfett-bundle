@@ -201,14 +201,20 @@ document.addEventListener('keydown', function(event) {
     const firstName = getQueryParam('buyer_first_name');
     const lastName = getQueryParam('buyer_last_name');
     const orderId = getQueryParam('order_id');
+    var kaufDatum = new Date().toISOString().split('T')[0]; // <-- NEU
 
     // 4. Nur wenn eine E-Mail gefunden wurde...
     if (kaeuferEmail) {
-        // ...Kontakt identifizieren
-        Brevo.push(["identify", kaeuferEmail, {
-            'VORNAME': firstName,
-            'NACHNAME': lastName
-        }]); 
+     // ...Kontakt identifizieren UND Attribute setzen
+        Brevo.push(["identify", {
+            "email": kaeuferEmail,
+            "attributes": {
+                "VORNAME": firstName,
+                "NACHNAME": lastName,
+                "LETZTER_KAUF_SKU": "SOS_UPGRADE",
+                "LETZTER_KAUF_DATUM": kaufDatum
+            }
+        }]);
         
         // ...und KAUF-EVENT (Pfad A) auslösen
         Brevo.push(["track", "Kauf_SOS_Bundle_Upgrade", {
