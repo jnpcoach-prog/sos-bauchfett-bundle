@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="style.css" />
 
 <meta name="robots" content="noindex, nofollow">
-<!-- Google tag (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2JRKPT8TY"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -65,6 +64,18 @@
 
 .modal-close:hover {
     color: #83a725;
+}
+
+/* Pulsierender blauer Button für den Upsell */
+@keyframes pulse-blue {
+    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(0, 74, 173, 0.3); }
+    50% { transform: scale(1.02); box-shadow: 0 4px 20px rgba(0, 74, 173, 0.5); }
+    100% { transform: scale(1); box-shadow: 0 4px 15px rgba(0, 74, 173, 0.3); }
+}
+
+.upsell-button:hover {
+    animation: pulse-blue 1.5s infinite;
+    background-color: #003d8f !important;
 }
 
 @keyframes fadeIn {
@@ -128,6 +139,33 @@
 </div>
     
 <a href="BONUS  Cellulite verstehen und ganzheitlich regulieren.pdf" class="cta-button" style="margin: 10px; display: block;" target="_blank">Dein Bonus: Cellulite verstehen und ganzheitlich regulieren (PDF)</a>
+
+<div style="margin-top: 60px; margin-bottom: 20px; background-color: #f9f9f9; padding: 40px 20px; border-radius: 15px; border: 1px solid #eeeeee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+    
+    <h3 style="color: #333; font-size: 24px; margin-bottom: 20px;">⚠️ Wichtig: Damit dieser Plan für dich auch wirklich funktioniert...</h3>
+    
+    <p style="font-size: 16px; line-height: 1.6; max-width: 700px; margin: 0 auto 20px auto;">
+        Du hast jetzt das perfekte Werkzeug gegen das Bauchfett (die Downloads oben).<br>
+        Doch erfahrungsgemäß gibt es einen Feind, den kein Ernährungsplan der Welt besiegen kann: <strong>Den Alltag.</strong>
+    </p>
+
+    <p style="font-size: 16px; line-height: 1.6; max-width: 700px; margin: 0 auto 30px auto;">
+        Wenn du abends gestresst bist und die Hormone verrücktspielen, hilft oft das beste Rezept nicht – weil der Kopf "Belohnung" schreit.
+        Damit du das SOS-Bundle nicht in 3 Wochen frustriert in die Ecke legst, habe ich hier die <strong>Versicherung für deinen Durchhalte-Erfolg</strong>:
+    </p>
+
+    <div style="margin-bottom: 25px;">
+        <img src="image_6fa549.jpg" alt="Hormoneller Entscheidungskompass" style="width: 100%; max-width: 350px; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    </div>
+
+    <h4 style="font-size: 20px; margin-bottom: 10px; color: #004aad;">Der Hormonelle Entscheidungskompass</h4>
+    <p style="font-size: 14px; color: #666; margin-bottom: 25px;">Stoppe das emotionale Essen, bevor es deinen Erfolg sabotiert.<br>Keine Diät. Kein Tracking. Nur die Sicherheit, Hunger von Stress zu unterscheiden.</p>
+
+    <a href="HIER_DEINEN_DIGISTORE_LINK_EINFUEGEN" class="upsell-button" target="_blank" style="display: inline-block; background-color: #004aad; color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 18px; text-decoration: none; padding: 18px 30px; border-radius: 50px; box-shadow: 0 4px 15px rgba(0, 74, 173, 0.3); transition: all 0.3s ease;">
+       Ja, ich will meinen Erfolg absichern
+    </a>
+
+</div>
 </div>
 
 <div style="margin-top: 40px; font-size: 16px;">
